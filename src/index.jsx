@@ -25,7 +25,7 @@ class Board extends React.Component {
     for (let i = 0; i < x; i++) {
       let squares = [];
       for (let j = 0; j < x; j++) {
-        squares.push(this.renderSquare(i));
+        squares.push(this.renderSquare(i * 3 + j));
       }
       board.push(<div className="board-row">{squares}</div>)
     }
