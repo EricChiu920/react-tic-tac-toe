@@ -90,6 +90,8 @@ class Game extends React.Component {
       stepNumber: step,
       xIsNext: (step % 2) === 0,
     });
+
+
   }
 
   render() {
@@ -99,9 +101,11 @@ class Game extends React.Component {
 
     const moves = history.map((step, move) => {
       const desc = move ? `Go to move #${move} ${this.state.history[move].location}` : `Go to game start`;
+      const buttonStyle = move === this.state.stepNumber ? 'bold' : 'normal';
+
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>
+          <button onClick={() => this.jumpTo(move)} style={{fontWeight: buttonStyle}}>
             {desc}
           </button>
         </li>
