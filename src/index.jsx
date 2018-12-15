@@ -20,25 +20,21 @@ class Board extends React.Component {
     );
   }
 
+  createSquareBoard(x) {
+    let board = [];
+    for (let i = 0; i < x; i++) {
+      let squares = [];
+      for (let j = 0; j < x; j++) {
+        squares.push(this.renderSquare(i));
+      }
+      board.push(<div className="board-row">{squares}</div>)
+    }
+    return board
+  }
+
   render() {
     return (
-      <>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </>
+      this.createSquareBoard(3)
     );
   }
 }
@@ -122,7 +118,7 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
-          <Board 
+          <Board
             squares={current.squares}
             onClick={(i) => this.handclick(i)}
           />
