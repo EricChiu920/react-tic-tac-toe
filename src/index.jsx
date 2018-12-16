@@ -47,6 +47,7 @@ class Game extends React.Component {
     }],
     xIsNext: true,
     stepNumber: 0,
+    sortDescending: true,
   }
 
   handclick(i) {
@@ -86,8 +87,13 @@ class Game extends React.Component {
       stepNumber: step,
       xIsNext: (step % 2) === 0,
     });
+  }
 
-
+  changeSort() {
+    this.setState({
+      sortDescending: !this.state.sortDescending,
+      // history: this.state.history.slice().reverse(),
+    })
   }
 
   render() {
@@ -95,7 +101,7 @@ class Game extends React.Component {
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
-    const moves = history.map((step, move) => {
+    let moves = history.map((step, move) => {
       const desc = move ? `Go to move #${move} ${this.state.history[move].location}` : `Go to game start`;
       const buttonStyle = move === this.state.stepNumber ? 'bold' : 'normal';
 
@@ -107,6 +113,9 @@ class Game extends React.Component {
         </li>
       )
     })
+    if(!this.state.sortDescending) {
+      moves = moves.slice().reverse();
+    }
 
     let status;
     if (winner) {
@@ -124,7 +133,10 @@ class Game extends React.Component {
           />
         </div>
         <div className="game-info">
-          <div>{status}</div>
+          <div>
+            {status}
+            <button className="sort-button" onClick={() => this.changeSort()}>{`Sort ${this.state.sortDescending ? 'Descending' : 'Ascending'}`}</button>
+          </div>
           <ol>{moves}</ol>
         </div>
       </div>

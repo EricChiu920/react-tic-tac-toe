@@ -17,6 +17,10 @@ ol, ul {
   margin-bottom: 10px;
 }
 
+.sort-button {
+  margin-left: 15px;
+}
+
 .square {
   background: #fff;
   border: 1px solid #999;
