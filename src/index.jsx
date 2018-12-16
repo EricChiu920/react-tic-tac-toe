@@ -146,7 +146,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>
-            {status}
+            {this.state.history.length < 10 ? status : 'No more moves. Game is a draw.'}
             <button className="sort-button" onClick={() => this.changeSort()}>
               {`Sort moves ${this.state.sortDescending ? 'descending' : 'ascending'}`}
             </button>
