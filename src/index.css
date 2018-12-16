@@ -40,6 +40,10 @@ ol, ul {
   outline: none;
 }
 
+.win-square {
+  background-color: yellow;
+}
+
 .kbd-navigation .square:focus {
   background: #ddd;
 }
